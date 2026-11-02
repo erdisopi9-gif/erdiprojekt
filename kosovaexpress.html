@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosova Express LLC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0f1a;
+            overflow-x: hidden;
+        }
+
+        /* ============ HERO / FIRST SCREEN ============ */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center 40%;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(10, 20, 30, 0.65);
+            z-index: -1;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1.8rem 2.5rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            z-index: 10;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s ease, color 0.2s;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            border-bottom-color: #eab308;
+            color: #facc15;
+        }
+
+        .navbar a.job-link {
+            position: relative;
+            color: #facc15;
+        }
+
+        .navbar a.job-link::after {
+            content: "●";
+            position: absolute;
+            top: -2px;
+            right: -10px;
+            font-size: 0.7rem;
+            color: #22c55e;
+            animation: blink 1.6s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ============ HOME CONTENT ============ */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .eagle-logo {
+            font-size: 9rem;
+            color: #eab308;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .eagle-logo:hover {
+            transform: scale(1.03);
+        }
+
+        .company-name {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin: 0.2rem 0 0.5rem;
+            color: #ffffff;
+        }
+
+        .company-sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            border-top: 2px solid #eab308;
+            border-bottom: 2px solid #eab308;
+            padding: 0.6rem 1.5rem;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #f1f5f9;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 5;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.1rem;
+            color: #eab308;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        .about-section {
+            background: #0a0f1a;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(234, 179, 8, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(234, 179, 8, 0.06) 0%, transparent 40%);
+            padding: 5rem 2rem 5rem;
+            color: #f1f5f9;
+        }
+
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-eyebrow {
+            color: #eab308;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about-heading {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .about-heading span {
+            color: #eab308;
+        }
+
+        .about-intro {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 750px;
+            line-height: 1.7;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 2rem 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #eab308;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .about-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(234, 179, 8, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .about-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .about-card .icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .about-card p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            padding: 2.5rem 2rem;
+            background: rgba(234, 179, 8, 0.05);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #eab308;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .about-cta {
+            text-align: center;
+        }
+
+        .about-cta p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #eab308;
+            color: #0a0f1a;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background: #facc15;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(234, 179, 8, 0.3);
+        }
+
+        .site-footer {
+            background: #060a12;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ============ FULL-SCREEN OVERLAYS ============ */
+        .screen-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: #0a0f1a;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(234, 179, 8, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(234, 179, 8, 0.08) 0%, transparent 40%);
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .screen-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .overlay-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            background: #0a0f1a;
+            z-index: 5;
+        }
+
+        .overlay-topbar .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .overlay-topbar .brand i {
+            color: #eab308;
+            font-size: 1.6rem;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .close-btn:hover {
+            background: #eab308;
+            color: #0a0f1a;
+            border-color: #eab308;
+            transform: rotate(90deg);
+        }
+
+        .overlay-body {
+            flex: 1;
+            padding: 3rem 3rem 4rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .overlay-eyebrow {
+            color: #eab308;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-heading {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.2rem;
+        }
+
+        .overlay-heading span {
+            color: #eab308;
+        }
+
+        .overlay-intro {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 2rem 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #eab308;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(234, 179, 8, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .contact-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .contact-card .icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .contact-card .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .value {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .contact-card a.value {
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-card a.value:hover {
+            color: #eab308;
+        }
+
+        .contact-card.owner {
+            background: linear-gradient(145deg, rgba(234, 179, 8, 0.12), rgba(234, 179, 8, 0.03));
+            border-color: rgba(234, 179, 8, 0.35);
+        }
+
+        .contact-card.owner .icon-wrap {
+            background: #eab308;
+            color: #0a0f1a;
+        }
+
+        .portfolio-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2.5rem 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .portfolio-section-title::before {
+            content: "";
+            width: 40px;
+            height: 3px;
+            background: #eab308;
+            border-radius: 2px;
+        }
+
+        .portfolio-section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .agri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .agri-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .agri-card:hover {
+            border-color: rgba(234, 179, 8, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .agri-card .img-wrap {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #111827;
+        }
+
+        .agri-card .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .agri-card:hover .img-wrap img {
+            transform: scale(1.07);
+        }
+
+        .agri-card .card-body {
+            padding: 1.5rem 1.5rem 1.8rem;
+        }
+
+        .agri-card .card-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .agri-card .card-body p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .truck-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .truck-gallery .truck-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .truck-gallery .truck-item:hover {
+            border-color: rgba(234, 179, 8, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .truck-gallery .truck-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .truck-gallery .truck-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .truck-gallery .truck-item .caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 2rem 1.2rem 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .creator-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .creator-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #eab308, #b45309);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #0a0f1a;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 40px rgba(234, 179, 8, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .creator-name {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .creator-role {
+            color: #eab308;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .creator-bio {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 650px;
+            line-height: 1.7;
+            margin: 0 auto;
+        }
+
+        .creator-bio strong {
+            color: #facc15;
+        }
+
+        /* ============ PRICES & CONTRACTS ============ */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.2rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            border-color: rgba(234, 179, 8, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .price-card.featured {
+            background: linear-gradient(160deg, rgba(234, 179, 8, 0.14), rgba(234, 179, 8, 0.03));
+            border-color: rgba(234, 179, 8, 0.5);
+        }
+
+        .price-card .price-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #eab308;
+            margin-bottom: 0.8rem;
+        }
+
+        .price-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .price-card .price-value {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #facc15;
+            margin-bottom: 0.3rem;
+            letter-spacing: -1px;
+        }
+
+        .price-card .price-value small {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+
+        .price-card .price-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 1.8rem;
+        }
+
+        .price-card ul li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .price-card ul li i {
+            color: #22c55e;
+            font-size: 0.85rem;
+        }
+
+        .price-card .price-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .price-card .price-btn:hover {
+            background: #eab308;
+            color: #0a0f1a;
+            border-color: #eab308;
+        }
+
+        .contract-note {
+            background: rgba(234, 179, 8, 0.06);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .contract-note strong {
+            color: #facc15;
+        }
+
+        .contract-note i {
+            color: #eab308;
+            margin-right: 0.5rem;
+        }
+
+        /* ============ JOB APPLICATION ============ */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 2rem 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #22c55e;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .job-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .job-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .job-card .job-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .job-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-card .job-location {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .job-card .job-location i {
+            color: #eab308;
+            font-size: 0.8rem;
+        }
+
+        .job-card p {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .apply-form-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 22px;
+            padding: 2.5rem;
+        }
+
+        .apply-form-box h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .apply-form-box .form-sub {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-field label {
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.25s ease;
+            outline: none;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: #eab308;
+            box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.15);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .apply-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #22c55e;
+            color: #0a0f1a;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 1rem;
+        }
+
+        .apply-submit:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .apply-success {
+            display: none;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+            padding: 1rem 1.3rem;
+            border-radius: 12px;
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            align-items: flex-start;
+            gap: 0.6rem;
+            line-height: 1.5;
+        }
+
+        .apply-success.show {
+            display: flex;
+        }
+
+        .apply-success i {
+            margin-top: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .navbar { gap: 1.2rem; padding: 1.2rem 1.5rem; }
+            .navbar a { font-size: 0.75rem; }
+            .eagle-logo { font-size: 7rem; }
+            .company-name { font-size: 3.2rem; letter-spacing: 3px; }
+            .company-sub { font-size: 1rem; letter-spacing: 4px; }
+            .tagline { font-size: 1.2rem; }
+            .overlay-body { padding: 2rem 2rem 3rem; }
+            .overlay-topbar { padding: 1.2rem 1.8rem; }
+            .about-section { padding: 4rem 1.5rem; }
+        }
+
+        @media (max-width: 650px) {
+            .navbar { gap: 0.7rem; padding: 1rem; }
+            .navbar a { font-size: 0.6rem; letter-spacing: 0.3px; }
+            .navbar a.job-link::after { right: -7px; font-size: 0.5rem; }
+            .eagle-logo { font-size: 5rem; }
+            .company-name { font-size: 2.2rem; letter-spacing: 2px; }
+            .company-sub { font-size: 0.8rem; letter-spacing: 2px; padding: 0.4rem 0.8rem; }
+            .tagline { font-size: 1rem; }
+            .scroll-indicator { font-size: 0.6rem; bottom: 1.5rem; }
+            .overlay-topbar { padding: 1rem 1.2rem; }
+            .overlay-topbar .brand { font-size: 0.75rem; gap: 0.5rem; }
+            .overlay-topbar .brand i { font-size: 1.1rem; }
+            .overlay-body { padding: 1.5rem 1.2rem 2.5rem; }
+            .overlay-heading { font-size: 2rem; }
+            .overlay-intro { font-size: 1rem; margin-bottom: 2rem; }
+            .contact-grid { gap: 1rem; }
+            .contact-card { padding: 1.5rem 1.3rem; }
+            .close-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .portfolio-section-title { font-size: 1.2rem; }
+            .about-section { padding: 3rem 1.2rem; }
+            .about-intro { font-size: 1rem; margin-bottom: 2.5rem; }
+            .stats-strip { padding: 2rem 1rem; gap: 1.2rem; }
+            .stat-item h4 { font-size: 1.7rem; }
+            .creator-avatar { width: 90px; height: 90px; font-size: 2rem; }
+            .creator-name { font-size: 1.8rem; }
+            .apply-form-box { padding: 1.8rem 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ HERO / FIRST SCREEN ============ -->
+    <section class="hero" id="hero">
+        <nav class="navbar">
+            <a onclick="openOverlay('contact-screen')">Contact</a>
+            <a onclick="openOverlay('portfolio-screen')">Portfolio</a>
+            <a onclick="openOverlay('prices-screen')">Prices &amp; Contracts</a>
+            <a onclick="openOverlay('jobs-screen')" class="job-link">Apply for Job</a>
+            <a onclick="openOverlay('creator-screen')">Creator of Website</a>
+        </nav>
+
+        <div class="main-content" id="home-content">
+            <div class="eagle-logo" aria-label="Eagle logo">
+                <i class="fas fa-eagle"></i>
+            </div>
+            <h1 class="company-name">Kosova Express LLC</h1>
+            <div class="company-sub">Agriculture</div>
+            <p class="tagline">Strength in motion · Precision in delivery</p>
+        </div>
+
+        <div class="scroll-indicator" onclick="scrollToAbout()">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <div class="about-eyebrow">Who We Are</div>
+            <h2 class="about-heading">Rooted in <span>agriculture</span>, driven by reliability.</h2>
+            <p class="about-intro">
+                Kosova Express LLC is a Texas-based agricultural transport company built on hard work and trust.
+                We move what farmers grow — grains, produce, feed, and equipment — with the care and punctuality
+                that keeps America's food supply chain moving. Every load is handled like it's our own harvest.
+            </p>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon-wrap"><i class="fas fa-truck-fast"></i></div>
+                    <h3>Farm-to-Market Transport</h3>
+                    <p>We connect fields to elevators, distribution centers, and markets with fast, dependable trucking across Texas and the Southwest.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="icon-wrap"><i class="fas fa-temperature-low"></i></div>
+                    <h3>Temperature-Controlled</h3>
+                    <p>Refrigerated trailers keep fresh produce and perishables at the ideal temperature from pickup to delivery.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="icon-wrap"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Safe &amp; Insured</h3>
+                    <p>Fully insured cargo, industry-grade load securement, and experienced drivers — your goods travel protected.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="icon-wrap"><i class="fas fa-clock"></i></div>
+                    <h3>On-Time, Every Time</h3>
+                    <p>Harvest waits for no one. Our scheduling and dispatch are built around your timing, not ours.</p>
+                </div>
+            </div>
+
+            <div class="stats-strip">
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>On-Time Focus</p>
+                </div>
+                <div class="stat-item">
+                    <h4>TX</h4>
+                    <p>Based in Saginaw</p>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <p>Owner Support</p>
+                </div>
+                <div class="stat-item">
+                    <h4>1</h4>
+                    <p>Owner You Can Call</p>
+                </div>
+            </div>
+
+            <div class="about-cta">
+                <p>Need to move an agricultural load? Let's talk.</p>
+                <a class="cta-btn" onclick="openOverlay('contact-screen')">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        © 2025 Kosova Express LLC — Agriculture Transport · Saginaw, Texas — Driven by excellence
+    </footer>
+
+    <!-- ============ CONTACT OVERLAY ============ -->
+    <div class="screen-overlay" id="contact-screen">
+        <div class="overlay-topbar">
+            <div class="brand">
+                <i class="fas fa-eagle"></i>
+                Kosova Express LLC
+            </div>
+            <button class="close-btn" onclick="closeOverlay('contact-screen')" aria-label="Close contact">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="overlay-body">
+            <div class="overlay-eyebrow">Get in touch</div>
+            <h2 class="overlay-heading">Let's talk <span>business.</span></h2>
+            <p class="overlay-intro">
+                Have a question or need a quote? Reach out directly to our owner —
+                we respond fast and deliver with precision.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card owner">
+                    <div class="icon-wrap"><i class="fas fa-user-tie"></i></div>
+                    <div class="label">Owner</div>
+                    <div class="value">Mehmet Sopi</div>
+                </div>
+
+                <!-- Phone → WhatsApp -->
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
+                    <div class="label">WhatsApp</div>
+                    <a class="value" href="https://wa.me/18173077011" target="_blank" rel="noopener">(817) 307 7011</a>
+                </div>
+
+                <!-- Email → Gmail compose -->
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+                    <div class="label">Email (Gmail)</div>
+                    <a class="value" href="https://mail.google.com/mail/?view=cm&fs=1&to=mehmets1@gmail.com&su=Inquiry%20for%20Kosova%20Express%20LLC" target="_blank" rel="noopener">mehmets1@gmail.com</a>
+                </div>
+
+                <!-- Address → Google Maps -->
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="label">Address</div>
+                    <a class="value" href="https://www.google.com/maps/search/?api=1&query=1039+Roundrock+Drive+Saginaw+TX+76179" target="_blank" rel="noopener">1039 Roundrock Drive<br>Saginaw, TX 76179</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PORTFOLIO OVERLAY ============ -->
+    <div class="screen-overlay" id="portfolio-screen">
+        <div class="overlay-topbar">
+            <div class="brand">
+                <i class="fas fa-eagle"></i>
+                Kosova Express LLC
+            </div>
+            <button class="close-btn" onclick="closeOverlay('portfolio-screen')" aria-label="Close portfolio">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="overlay-body">
+            <div class="overlay-eyebrow">Our Portfolio</div>
+            <h2 class="overlay-heading">Moving <span>agriculture</span> forward.</h2>
+            <p class="overlay-intro">
+                From harvest to market, Kosova Express LLC transports agricultural goods safely and on time.
+                We handle grains, produce, livestock feed, and fresh crops with the care, temperature control,
+                and reliability your business depends on.
+            </p>
+
+            <div class="portfolio-section-title">What We Haul</div>
+            <div class="agri-grid">
+                <div class="agri-card">
+                    <div class="img-wrap">
+                        <img src="https://images.pexels.com/photos/2933243/pexels-photo-2933243.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Grain harvest in field">
+                    </div>
+                    <div class="card-body">
+                        <h3>Grains &amp; Cereals</h3>
+                        <p>Bulk transport of wheat, corn, soybeans, and barley in dry hopper trailers — sealed, weighed, and delivered with moisture and quality intact.</p>
+                    </div>
+                </div>
+
+                <div class="agri-card">
+                    <div class="img-wrap">
+                        <img src="https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fresh vegetables and produce">
+                    </div>
+                    <div class="card-body">
+                        <h3>Fresh Produce</h3>
+                        <p>Temperature-controlled reefers keep fruits and vegetables fresh from farm to distribution center. Real-time monitoring ensures ideal conditions throughout the trip.</p>
+                    </div>
+                </div>
+
+                <div class="agri-card">
+                    <div class="img-wrap">
+                        <img src="https://images.pexels.com/photos/2255459/pexels-photo-2255459.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Livestock feed and hay bales">
+                    </div>
+                    <div class="card-body">
+                        <h3>Feed &amp; Hay</h3>
+                        <p>Reliable delivery of hay bales, livestock feed, and supplements to farms and ranches — with flexible scheduling that fits your feeding cycle.</p>
+                    </div>
+                </div>
+
+                <div class="agri-card">
+                    <div class="img-wrap">
+                        <img src="https://images.pexels.com/photos/4117543/pexels-photo-4117543.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tractor working in field">
+                    </div>
+                    <div class="card-body">
+                        <h3>Farm Equipment</h3>
+                        <p>Flatbed and step-deck transport for tractors, harvesters, and implements. Load secured with industry-grade strapping and full cargo insurance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-section-title">Our Fleet</div>
+            <div class="truck-gallery">
+                <div class="truck-item">
+                    <img src="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Freight truck on highway">
+                    <div class="caption">Long-Haul Semi Trucks</div>
+                </div>
+                <div class="truck-item">
+                    <img src="https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Semi truck at sunset">
+                    <div class="caption">Nationwide Delivery</div>
+                </div>
+                <div class="truck-item">
+                    <img src="https://images.pexels.com/photos/3057967/pexels-photo-3057967.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Truck trailer on road">
+                    <div class="caption">Hopper &amp; Reefer Trailers</div>
+                </div>
+                <div class="truck-item">
+                    <img src="https://images.pexels.com/photos/2199294/pexels-photo-2199294.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Truck fleet parked">
+                    <div class="caption">Reliable, Maintained Fleet</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PRICES & CONTRACTS OVERLAY ============ -->
+    <div class="screen-overlay" id="prices-screen">
+        <div class="overlay-topbar">
+            <div class="brand">
+                <i class="fas fa-eagle"></i>
+                Kosova Express LLC
+            </div>
+            <button class="close-btn" onclick="closeOverlay('prices-screen')" aria-label="Close prices">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="overlay-body">
+            <div class="overlay-eyebrow">Pricing &amp; Contracts</div>
+            <h2 class="overlay-heading">Fair rates. <span>Clear terms.</span></h2>
+            <p class="overlay-intro">
+                Transparent pricing for every load — whether it's a one-time haul or a long-term contract.
+                All quotes include fuel, insurance, and professional handling. No hidden fees.
+            </p>
+
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-tag">Single Load</div>
+                    <h3>One-Time Haul</h3>
+                    <div class="price-value">$2.75 <small>/ mile</small></div>
+                    <p class="price-desc">Perfect for seasonal harvests or one-off deliveries. Minimum 100 miles.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Fuel included</li>
+                        <li><i class="fas fa-check"></i> Cargo insurance</li>
+                        <li><i class="fas fa-check"></i> 24/7 dispatch support</li>
+                        <li><i class="fas fa-check"></i> Flexible scheduling</li>
+                    </ul>
+                    <a class="price-btn" onclick="closeOverlay('prices-screen'); openOverlay('contact-screen')">
+                        Request Quote <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="price-tag">Most Popular</div>
+                    <h3>Monthly Contract</h3>
+                    <div class="price-value">$2.45 <small>/ mile</small></div>
+                    <p class="price-desc">Best for recurring agricultural shipments. Includes priority dispatch.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Locked-in rate</li>
+                        <li><i class="fas fa-check"></i> Priority scheduling</li>
+                        <li><i class="fas fa-check"></i> Dedicated driver</li>
+                        <li><i class="fas fa-check"></i> Monthly invoicing</li>
+                    </ul>
+                    <a class="price-btn" onclick="closeOverlay('prices-screen'); openOverlay('contact-screen')">
+                        Get Contract <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-tag">Enterprise</div>
+                    <h3>Annual Agreement</h3>
+                    <div class="price-value">Custom <small>quote</small></div>
+                    <p class="price-desc">Full-service logistics partnership for large farms and cooperatives.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Volume discounts</li>
+                        <li><i class="fas fa-check"></i> Multi-truck fleet</li>
+                        <li><i class="fas fa-check"></i> Custom routing</li>
+                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                    </ul>
+                    <a class="price-btn" onclick="closeOverlay('prices-screen'); openOverlay('contact-screen')">
+                        Contact Sales <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contract-note">
+                <i class="fas fa-file-signature"></i>
+                <strong>Every contract includes:</strong> clearly written terms, no lock-in surprises, flexible cancellation with 14-day notice,
+                and full transparency on fuel surcharges. We believe a handshake still means something — the paperwork just makes it official.
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ APPLY FOR JOB OVERLAY ============ -->
+    <div class="screen-overlay" id="jobs-screen">
+        <div class="overlay-topbar">
+            <div class="brand">
+                <i class="fas fa-eagle"></i>
+                Kosova Express LLC
+            </div>
+            <button class="close-btn" onclick="closeOverlay('jobs-screen')" aria-label="Close jobs">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="overlay-body">
+            <div class="overlay-eyebrow">Careers</div>
+            <h2 class="overlay-heading">Drive with <span>us.</span></h2>
+            <p class="overlay-intro">
+                We're growing — and we're looking for reliable, hardworking people to join the Kosova Express family.
+                If you love the road and take pride in your work, we'd love to hear from you.
+            </p>
+
+            <div class="job-grid">
+                <div class="job-card">
+                    <div class="job-badge">Hiring Now</div>
+                    <h3>CDL-A Truck Driver</h3>
+                    <div class="job-location"><i class="fas fa-map-marker-alt"></i> Saginaw, TX · Full-time</div>
+                    <p>Haul agricultural loads across Texas and the Southwest. Must have a valid CDL-A, clean driving record, and 2+ years of experience.</p>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-badge">Hiring Now</div>
+                    <h3>Dispatcher</h3>
+                    <div class="job-location"><i class="fas fa-map-marker-alt"></i> Saginaw, TX · Full-time</div>
+                    <p>Coordinate routes, manage driver schedules, and keep shipments on time. Experience in logistics and strong communication required.</p>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-badge">Open</div>
+                    <h3>Owner-Operator</h3>
+                    <div class="job-location"><i class="fas fa-map-marker-alt"></i> Texas / Southwest · Contract</div>
+                    <p>Bring your own truck and join our network. Competitive per-mile pay, flexible routes, and full dispatch support.</p>
+                </div>
+            </div>
+
+            <div class="apply-form-box">
+                <h3>Apply Now</h3>
+                <p class="form-sub">Fill out the form below — when you submit, Gmail will open with all your details pre-filled, ready to send to us.</p>
+
+                <form id="apply-form" onsubmit="handleApply(event)">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="fullname">Full Name *</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(817) 000 0000" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="position">Position *</label>
+                            <select id="position" name="position" required>
+                                <option value="">Select a position</option>
+                                <option value="CDL-A Truck Driver">CDL-A Truck Driver</option>
+                                <option value="Dispatcher">Dispatcher</option>
+                                <option value="Owner-Operator">Owner-Operator</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-field full">
+                            <label for="message">Why should we hire you?</label>
+                            <textarea id="message" name="message" placeholder="Tell us a bit about your experience..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="apply-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+
+                    <div class="apply-success" id="apply-success">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Gmail is opening!</strong> Your application details are pre-filled. Just click <strong>Send</strong> in Gmail to submit it to us.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CREATOR OF WEBSITE OVERLAY ============ -->
+    <div class="screen-overlay" id="creator-screen">
+        <div class="overlay-topbar">
+            <div class="brand">
+                <i class="fas fa-eagle"></i>
+                Kosova Express LLC
+            </div>
+            <button class="close-btn" onclick="closeOverlay('creator-screen')" aria-label="Close creator">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="overlay-body">
+            <div class="overlay-eyebrow">Creator of Website</div>
+            <h2 class="overlay-heading">The mind behind <span>the site.</span></h2>
+            <p class="overlay-intro" style="text-align:center; margin-left:auto; margin-right:auto;">
+                This website was designed and developed with care by a professional web creator.
+            </p>
+
+            <div class="creator-hero">
+                <div class="creator-avatar">ES</div>
+                <div class="creator-name">Erdi Sopi</div>
+                <div class="creator-role">Founder of Alphastack</div>
+                <p class="creator-bio">
+                    <strong>Erdi Sopi</strong> is the owner of <strong>Alphastack</strong>, a digital studio
+                    specializing in modern, high-performance websites and digital experiences. He built this
+                    website for Kosova Express LLC with a focus on clean design, smooth motion, and a
+                    professional brand presence.
+                </p>
+            </div>
+
+            <div class="portfolio-section-title">Get in touch with the creator</div>
+
+            <div class="contact-grid">
+                <div class="contact-card owner">
+                    <div class="icon-wrap"><i class="fas fa-user-tie"></i></div>
+                    <div class="label">Creator</div>
+                    <div class="value">Erdi Sopi — Alphastack</div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fab fa-instagram"></i></div>
+                    <div class="label">Instagram</div>
+                    <a class="value" href="https://instagram.com/alphastack.ks" target="_blank" rel="noopener">@alphastack.ks</a>
+                </div>
+
+                <!-- Phone → WhatsApp -->
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
+                    <div class="label">WhatsApp</div>
+                    <a class="value" href="https://wa.me/38344271145" target="_blank" rel="noopener">044 271 145</a>
+                </div>
+
+                <!-- Email → Gmail compose -->
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+                    <div class="label">Email (Gmail)</div>
+                    <a class="value" href="https://mail.google.com/mail/?view=cm&fs=1&to=erdisopi77@gmail.com&su=Inquiry%20from%20Kosova%20Express%20Website" target="_blank" rel="noopener">erdisopi77@gmail.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-wrap"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="label">Alphastack Email (Gmail)</div>
+                    <a class="value" href="https://mail.google.com/mail/?view=cm&fs=1&to=alphastack19@gmail.com&su=Project%20Inquiry%20%E2%80%94%20Alphastack" target="_blank" rel="noopener">alphastack19@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openOverlay(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOverlay(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.screen-overlay.active').forEach(el => {
+                    el.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        function scrollToAbout() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleApply(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const position = document.getElementById('position').value;
+            const message = document.getElementById('message').value.trim();
+
+            const subject = `Job Application — ${position} — ${fullname}`;
+
+            const body =
+                `New Job Application — Kosova Express LLC\n` +
+                `-----------------------------------------\n\n` +
+                `Full Name: ${fullname}\n` +
+                `Phone: ${phone}\n` +
+                `Email: ${email}\n` +
+                `Position: ${position}\n\n` +
+                `Message:\n${message || '(none provided)'}\n\n` +
+                `-----------------------------------------\n` +
+                `Submitted from the Kosova Express LLC website.`;
+
+            const gmailUrl =
+                'https://mail.google.com/mail/?view=cm&fs=1' +
+                '&to=mehmets1@gmail.com' +
+                '&su=' + encodeURIComponent(subject) +
+                '&body=' + encodeURIComponent(body);
+
+            window.open(gmailUrl, '_blank');
+
+            const success = document.getElementById('apply-success');
+            success.classList.add('show');
+
+            document.getElementById('apply-form').reset();
+
+            setTimeout(() => {
+                success.classList.remove('show');
+            }, 8000);
+        }
+    </script>
+
+</body>
+</html>
